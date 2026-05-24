@@ -171,6 +171,43 @@ export default function Home() {
 
         </div>
       </section>
+    {/* How It Works */}
+      <section style={{ padding: '6rem 2rem', textAlign: 'center' }}>
+        <p style={{ color: '#ff4d1c', fontSize: '0.75rem', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.75rem' }}>How It Works</p>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1px' }}>Three Steps. Done.</h2>
+        <p style={{ color: '#6b7280', marginBottom: '3rem' }}>No timeline scrubbing. No export queues. Just paste and walk away.</p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem', maxWidth: '960px', margin: '0 auto' }}>
+          {[
+            { num: '01', icon: '🔗', title: 'Paste Your Link', desc: 'Drop any YouTube URL. We pull the video directly — no download needed on your machine.' },
+            { num: '02', icon: '🧠', title: 'AI Detects Highlights', desc: 'Our model scores every second for hook potential, emotion, and viral likelihood.' },
+            { num: '03', icon: '📤', title: 'Auto-Publish', desc: 'Clips are formatted for TikTok, Reels, and Shorts — published on your schedule.' },
+          ].map((step) => (
+            <div key={step.num} style={{ background: '#0f1117', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '14px', padding: '2rem', textAlign: 'left' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 800, color: 'rgba(255,77,28,0.1)', lineHeight: 1, marginBottom: '0.5rem' }}>{step.num}</div>
+              <div style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{step.icon}</div>
+              <div style={{ fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.5rem' }}>{step.title}</div>
+              <p style={{ fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.65 }}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Waitlist */}
+      <section style={{ padding: '6rem 2rem', textAlign: 'center', background: '#0f1117' }}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1px' }}>Join the Waitlist</h2>
+        <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Be the first to know when we launch. No spam.</p>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            style={{ padding: '0.85rem 1.5rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: '#f0ede8', fontSize: '1rem', width: '300px' }}
+          />
+          <button style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.85rem 2rem', borderRadius: '8px', fontSize: '1rem', fontWeight: 500, cursor: 'pointer' }}>
+            Get Early Access 🚀
+          </button>
+        </div>
+      </section>
     </main>
   );
 }
