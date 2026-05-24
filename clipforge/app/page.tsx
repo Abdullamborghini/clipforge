@@ -121,6 +121,56 @@ export default function Home() {
           </div>
         ))}
       </section>
+    {/* Pricing */}
+      <section style={{ padding: '6rem 2rem', textAlign: 'center' }}>
+        <p style={{ color: '#ff4d1c', fontSize: '0.75rem', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Pricing</p>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1px' }}>Start Free. Scale Fast.</h2>
+        <p style={{ color: '#6b7280', marginBottom: '3rem' }}>No contracts. Cancel anytime.</p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem', maxWidth: '900px', margin: '0 auto' }}>
+          
+          {/* Starter */}
+          <div style={{ background: '#0f1117', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '14px', padding: '2rem', textAlign: 'left' }}>
+            <div style={{ fontWeight: 800, fontSize: '1.3rem', marginBottom: '0.25rem' }}>Starter</div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 800, margin: '0.75rem 0 0.25rem' }}>$0<span style={{ fontSize: '1rem', fontWeight: 400, color: '#6b7280' }}>/mo</span></div>
+            <div style={{ color: '#6b7280', fontSize: '0.8rem', marginBottom: '1.5rem' }}>Good for testing</div>
+            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '1.5rem' }}>
+              {['5 clips/month', '720p export', 'Manual publish', 'Basic viral score'].map(f => (
+                <li key={f} style={{ color: '#6b7280', fontSize: '0.82rem', marginBottom: '0.6rem' }}>✓ {f}</li>
+              ))}
+            </ul>
+            <button style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#f0ede8', cursor: 'pointer' }}>Get Started Free</button>
+          </div>
+
+          {/* Creator */}
+          <div style={{ background: '#0f1117', border: '2px solid #ff4d1c', borderRadius: '14px', padding: '2rem', textAlign: 'left' }}>
+            <div style={{ background: 'rgba(255,77,28,0.12)', color: '#ff4d1c', fontSize: '0.7rem', fontWeight: 600, padding: '3px 8px', borderRadius: '4px', display: 'inline-block', marginBottom: '0.75rem' }}>Most Popular</div>
+            <div style={{ fontWeight: 800, fontSize: '1.3rem', marginBottom: '0.25rem' }}>Creator</div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 800, margin: '0.75rem 0 0.25rem' }}>$49<span style={{ fontSize: '1rem', fontWeight: 400, color: '#6b7280' }}>/mo</span></div>
+            <div style={{ color: '#6b7280', fontSize: '0.8rem', marginBottom: '1.5rem' }}>For serious creators</div>
+            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '1.5rem' }}>
+              {['100 clips/month', '1080p + 4K export', 'Auto-publish all platforms', 'AI viral score + captions', 'Priority processing'].map(f => (
+                <li key={f} style={{ color: '#6b7280', fontSize: '0.82rem', marginBottom: '0.6rem' }}>✓ {f}</li>
+              ))}
+            </ul>
+            <button style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: 'none', background: '#ff4d1c', color: '#fff', cursor: 'pointer', fontWeight: 500 }}>Start 7-Day Free Trial</button>
+          </div>
+
+          {/* Agency */}
+          <div style={{ background: '#0f1117', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '14px', padding: '2rem', textAlign: 'left' }}>
+            <div style={{ fontWeight: 800, fontSize: '1.3rem', marginBottom: '0.25rem' }}>Agency</div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 800, margin: '0.75rem 0 0.25rem' }}>$199<span style={{ fontSize: '1rem', fontWeight: 400, color: '#6b7280' }}>/mo</span></div>
+            <div style={{ color: '#6b7280', fontSize: '0.8rem', marginBottom: '1.5rem' }}>For teams & brands</div>
+            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '1.5rem' }}>
+              {['Unlimited clips', '10 channels', 'White-label exports', 'API access', 'Dedicated support'].map(f => (
+                <li key={f} style={{ color: '#6b7280', fontSize: '0.82rem', marginBottom: '0.6rem' }}>✓ {f}</li>
+              ))}
+            </ul>
+            <button style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#f0ede8', cursor: 'pointer' }}>Contact Sales</button>
+          </div>
+
+        </div>
+      </section>
     </main>
   );
 }
