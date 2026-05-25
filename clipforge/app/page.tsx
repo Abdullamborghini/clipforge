@@ -1,4 +1,25 @@
+'use client';
+import { useState } from 'react';
 export default function Home() {
+  const [url, setUrl] = useState('');
+  const [videoInfo, setVideoInfo] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const checkVideo = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/video-info`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+      const data = await res.json();
+      setVideoInfo(data);
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
   return (
     <main style={{
       backgroundColor: '#08090d',
