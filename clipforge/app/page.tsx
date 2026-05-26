@@ -241,21 +241,25 @@ export default function Home() {
   </div>
 </section>
 
-      {/* Waitlist */}
-      <section style={{ padding: '6rem 2rem', textAlign: 'center', background: '#0f1117' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1px' }}>Join the Waitlist</h2>
-        <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Be the first to know when we launch. No spam.</p>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            style={{ padding: '0.85rem 1.5rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: '#f0ede8', fontSize: '1rem', width: '300px' }}
-          />
-          <button style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.85rem 2rem', borderRadius: '8px', fontSize: '1rem', fontWeight: 500, cursor: 'pointer' }}>
-            Get Early Access 🚀
-          </button>
-        </div>
-      </section>
+{/* Waitlist */}
+<section style={{ padding: '6rem 2rem', textAlign: 'center', background: 'linear-gradient(180deg, #0a0c10 0%, #0d0f13 100%)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+  <div style={{ maxWidth: '520px', margin: '0 auto' }}>
+    <span style={{ background: 'rgba(255,77,28,0.1)', color: '#ff4d1c', padding: '0.4rem 1rem', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600 }}>🚀 Early Access</span>
+    <h2 style={{ fontSize: '2.5rem', fontWeight: 800, margin: '1rem 0 0.5rem' }}>Be First to Launch</h2>
+    <p style={{ color: '#6b7280', marginBottom: '2rem', fontSize: '1.05rem' }}>Join 12,000+ creators waiting for full access. No spam, ever.</p>
+    <div style={{ display: 'flex', gap: '0.75rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '0.5rem', maxWidth: '460px', margin: '0 auto' }}>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '8px', border: 'none', background: 'transparent', color: '#fff', fontSize: '0.95rem', outline: 'none' }}
+      />
+      <button style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 700, whiteSpace: 'nowrap' }}>
+        Get Access 🚀
+      </button>
+    </div>
+    <p style={{ color: '#4b5563', fontSize: '0.8rem', marginTop: '1rem' }}>✓ Free forever plan available &nbsp;·&nbsp; ✓ No credit card required</p>
+  </div>
+</section>
     </main>
   );
 }
