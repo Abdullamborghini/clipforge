@@ -2,7 +2,7 @@
 import { useState } from 'react';
 export default function Home() {
   const [url, setUrl] = useState('');
-  const [videoInfo, setVideoInfo] = useState(null);
+  const [videoInfo, setVideoInfo] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
   const checkVideo = async () => {
@@ -213,7 +213,31 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+{/* YouTube URL Input */}
+<section style={{ padding: '4rem 2rem', textAlign: 'center', background: '#0d0f13' }}>
+  <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1rem' }}>Try It Now</h2>
+  <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Paste a YouTube URL and see the magic</p>
+  <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+    <input
+      type="text"
+      placeholder="https://www.youtube.com/watch?v=..."
+      value={url}
+      onChange={(e) => setUrl(e.target.value)}
+      style={{ padding: '0.85rem 1.5rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: '#fff', width: '400px' }}
+    />
+    <button onClick={checkVideo} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.85rem 2rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 600 }}>
+      {loading ? 'Loading...' : 'Analyze Video'}
+    </button>
+  </div>
+  {videoInfo && (
+    <div style={{ marginTop: '2rem', background: '#0f1117', padding: '2rem', borderRadius: '12px', maxWidth: '500px', margin: '2rem auto 0' }}>
+      <img src={videoInfo.thumbnail} style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+      <h3 style={{ fontWeight: 700, marginBottom: '0.5rem' }}>{videoInfo.title}</h3>
+      <p style={{ color: '#6b7280' }}>Duration: {Math.floor(videoInfo.duration / 60)} minutes</p>
+      <p style={{ color: '#6b7280' }}>By: {videoInfo.uploader}</p>
+    </div>
+  )}
+</section>
       {/* Waitlist */}
       <section style={{ padding: '6rem 2rem', textAlign: 'center', background: '#0f1117' }}>
         <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1px' }}>Join the Waitlist</h2>
