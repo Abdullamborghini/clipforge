@@ -238,6 +238,31 @@ export default function Home() {
     </div>
   )}
 </section>
+{/* Clip Video */}
+<section style={{ padding: '4rem 2rem', textAlign: 'center', background: '#0a0c10' }}>
+  <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1rem' }}>Clip Your Video</h2>
+  <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Set start and end time to clip</p>
+  <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+    <input type="number" placeholder="Start (seconds)" id="startTime" style={{ padding: '0.85rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: '#fff', width: '150px' }} />
+    <input type="number" placeholder="End (seconds)" id="endTime" style={{ padding: '0.85rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: '#fff', width: '150px' }} />
+    <button onClick={async () => {
+      const start = (document.getElementById('startTime') as HTMLInputElement).value;
+      const end = (document.getElementById('endTime') as HTMLInputElement).value;
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clip`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, start, end }),
+      });
+      const blob = await res.blob();
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'clip.mp4';
+      link.click();
+    }} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.85rem 2rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 600 }}>
+      Download Clip
+    </button>
+  </div>
+</section>
       {/* Waitlist */}
       <section style={{ padding: '6rem 2rem', textAlign: 'center', background: '#0f1117' }}>
         <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-1px' }}>Join the Waitlist</h2>
