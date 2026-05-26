@@ -214,29 +214,31 @@ export default function Home() {
         </div>
       </section>
 {/* YouTube URL Input */}
-<section style={{ padding: '4rem 2rem', textAlign: 'center', background: '#0d0f13' }}>
-  <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1rem' }}>Try It Now</h2>
-  <p style={{ color: '#6b7280', marginBottom: '2rem' }}>Paste a YouTube URL and see the magic</p>
-  <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-    <input
-      type="text"
-      placeholder="https://www.youtube.com/watch?v=..."
-      value={url}
-      onChange={(e) => setUrl(e.target.value)}
-      style={{ padding: '0.85rem 1.5rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: '#fff', width: '400px' }}
-    />
-    <button onClick={checkVideo} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.85rem 2rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 600 }}>
-      {loading ? 'Loading...' : 'Analyze Video'}
-    </button>
-  </div>
-  {videoInfo && (
-    <div style={{ marginTop: '2rem', background: '#0f1117', padding: '2rem', borderRadius: '12px', maxWidth: '500px', margin: '2rem auto 0' }}>
-      <img src={videoInfo.thumbnail} style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
-      <h3 style={{ fontWeight: 700, marginBottom: '0.5rem' }}>{videoInfo.title}</h3>
-      <p style={{ color: '#6b7280' }}>Duration: {Math.floor(videoInfo.duration / 60)} minutes</p>
-      <p style={{ color: '#6b7280' }}>By: {videoInfo.uploader}</p>
+<section style={{ padding: '5rem 2rem', textAlign: 'center', background: 'linear-gradient(180deg, #0d0f13 0%, #0a0c10 100%)' }}>
+  <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+    <span style={{ background: 'rgba(255,77,28,0.1)', color: '#ff4d1c', padding: '0.4rem 1rem', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600 }}>✨ AI-Powered</span>
+    <h2 style={{ fontSize: '2.5rem', fontWeight: 800, margin: '1rem 0 0.5rem' }}>Analyze Any YouTube Video</h2>
+    <p style={{ color: '#6b7280', marginBottom: '2rem', fontSize: '1.05rem' }}>Paste a link and let AI do the rest</p>
+    <div style={{ display: 'flex', gap: '0.75rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '0.5rem', maxWidth: '560px', margin: '0 auto 2rem' }}>
+      <input
+        type="text"
+        placeholder="https://www.youtube.com/watch?v=..."
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+        style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '8px', border: 'none', background: 'transparent', color: '#fff', fontSize: '0.95rem', outline: 'none' }}
+      />
+      <button onClick={checkVideo} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 700, whiteSpace: 'nowrap' }}>
+        {loading ? '⏳ Analyzing...' : '🚀 Analyze'}
+      </button>
     </div>
-  )}
+    {videoInfo && (
+      <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '1.5rem', textAlign: 'left' }}>
+        <img src={videoInfo.thumbnail} style={{ width: '100%', borderRadius: '10px', marginBottom: '1rem' }} />
+        <h3 style={{ fontWeight: 700, marginBottom: '0.5rem', fontSize: '1.1rem' }}>{videoInfo.title}</h3>
+        <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>⏱ {Math.floor(videoInfo.duration / 60)} min • 👤 {videoInfo.uploader}</p>
+      </div>
+    )}
+  </div>
 </section>
 
       {/* Waitlist */}
