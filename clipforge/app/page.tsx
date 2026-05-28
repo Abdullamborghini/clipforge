@@ -1,10 +1,11 @@
 'use client';
-import { useState } from 'react'; 
-import { SignInButton } from "@clerk/nextjs";
+import { useState } from 'react';
+
 export default function Home() {
   const [url, setUrl] = useState('');
   const [videoInfo, setVideoInfo] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const checkVideo = async () => {
     setLoading(true);
@@ -21,114 +22,60 @@ export default function Home() {
     }
     setLoading(false);
   };
+
   return (
-    <main style={{
-      backgroundColor: '#08090d',
-      minHeight: '100vh',
-      fontFamily: 'sans-serif',
-      color: '#f0ede8',
-      padding: '0',
-      margin: '0'
-    }}>
+    <main style={{ backgroundColor: '#08090d', minHeight: '100vh', fontFamily: 'sans-serif', color: '#f0ede8', padding: '0', margin: '0' }}>
+
+      {/* Modal Login */}
+      {showModal && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
+          <div style={{ background: '#0f1117', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '2.5rem', maxWidth: '400px', width: '90%', textAlign: 'center' }}>
+            <h2 style={{ fontWeight: 800, fontSize: '1.5rem', marginBottom: '0.5rem' }}>Get Started Free</h2>
+            <p style={{ color: '#6b7280', marginBottom: '2rem', fontSize: '0.9rem' }}>Join 12,000+ creators already using ClipForge</p>
+            <input type="email" placeholder="Enter your email" style={{ width: '100%', padding: '0.85rem 1rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: '#fff', fontSize: '0.95rem', marginBottom: '1rem', boxSizing: 'border-box' }} />
+            <button style={{ width: '100%', background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.85rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 700, fontSize: '1rem', marginBottom: '1rem' }}>
+              🚀 Start for Free
+            </button>
+            <button onClick={() => setShowModal(false)} style={{ background: 'transparent', border: 'none', color: '#6b7280', cursor: 'pointer', fontSize: '0.85rem' }}>
+              Maybe later
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Navbar */}
-      <nav style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1.2rem 3rem',
-        borderBottom: '1px solid rgba(255,255,255,0.07)'
-      }}>
+      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.2rem 3rem', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
         <div style={{ fontWeight: 800, fontSize: '1.3rem' }}>
           Clip<span style={{ color: '#ff4d1c' }}>Forge</span>.AI
         </div>
-        <SignInButton mode="modal">
-          <button style={{
-            background: '#ff4d1c',
-            color: '#fff',
-            border: 'none',
-            padding: '0.5rem 1.2rem',
-            borderRadius: '6px',
-            cursor: 'pointer',
-            fontWeight: 500
-          }}>
-            Start Free
-          </button>
-        </SignInButton>
+        <button onClick={() => setShowModal(true)} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.5rem 1.2rem', borderRadius: '6px', cursor: 'pointer', fontWeight: 500 }}>
+          Start Free
+        </button>
       </nav>
 
       {/* Hero */}
       <section style={{ textAlign: 'center', padding: '6rem 2rem 4rem' }}>
-        <div style={{
-          display: 'inline-block',
-          background: 'rgba(255,77,28,0.12)',
-          border: '1px solid rgba(255,77,28,0.3)',
-          color: '#ff8c42',
-          fontSize: '0.75rem',
-          padding: '0.35rem 0.85rem',
-          borderRadius: '999px',
-          marginBottom: '1.5rem'
-        }}>
+        <div style={{ display: 'inline-block', background: 'rgba(255,77,28,0.12)', border: '1px solid rgba(255,77,28,0.3)', color: '#ff8c42', fontSize: '0.75rem', padding: '0.35rem 0.85rem', borderRadius: '999px', marginBottom: '1.5rem' }}>
           🔥 Now with AI Viral Score™
         </div>
-        <h1 style={{
-          fontSize: 'clamp(2.5rem,6vw,5rem)',
-          fontWeight: 800,
-          lineHeight: 1.05,
-          marginBottom: '1.5rem',
-          letterSpacing: '-2px'
-        }}>
+        <h1 style={{ fontSize: 'clamp(2.5rem,6vw,5rem)', fontWeight: 800, lineHeight: 1.05, marginBottom: '1.5rem', letterSpacing: '-2px' }}>
           Turn Long Videos Into<br />
           <span style={{ color: '#ff4d1c' }}>Viral Clips</span> — Automatically.
         </h1>
-        <p style={{
-          fontSize: '1.1rem',
-          color: '#6b7280',
-          maxWidth: '520px',
-          margin: '0 auto 2.5rem',
-          lineHeight: 1.7
-        }}>
-          Paste a YouTube link. ClipForge AI detects the best moments,
-          edits them, and publishes to TikTok, Reels, and Shorts —
+        <p style={{ fontSize: '1.1rem', color: '#6b7280', maxWidth: '520px', margin: '0 auto 2.5rem', lineHeight: 1.7 }}>
+          Paste a YouTube link. ClipForge AI detects the best moments, edits them, and publishes to TikTok, Reels, and Shorts —
           <strong style={{ color: '#f0ede8' }}> zero effort on your end.</strong>
         </p>
-        <SignInButton mode="modal">
-          <button style={{
-            background: '#ff4d1c',
-            color: '#fff',
-            border: 'none',
-            padding: '1rem 2.5rem',
-            borderRadius: '8px',
-            fontSize: '1.1rem',
-            fontWeight: 500,
-            cursor: 'pointer',
-            marginRight: '1rem'
-          }}>
-            🚀 Start for Free
-          </button>
-        </SignInButton>
-        <button style={{
-          background: 'transparent',
-          color: '#f0ede8',
-          border: '1px solid rgba(255,255,255,0.15)',
-          padding: '1rem 2rem',
-          borderRadius: '8px',
-          fontSize: '1rem',
-          cursor: 'pointer'
-        }}>
+        <button onClick={() => setShowModal(true)} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '1rem 2.5rem', borderRadius: '8px', fontSize: '1.1rem', fontWeight: 500, cursor: 'pointer', marginRight: '1rem' }}>
+          🚀 Start for Free
+        </button>
+        <button style={{ background: 'transparent', color: '#f0ede8', border: '1px solid rgba(255,255,255,0.15)', padding: '1rem 2rem', borderRadius: '8px', fontSize: '1rem', cursor: 'pointer' }}>
           Watch Demo
         </button>
       </section>
 
       {/* Stats */}
-      <section style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4,1fr)',
-        gap: '1.5rem',
-        maxWidth: '800px',
-        margin: '0 auto',
-        textAlign: 'center',
-        padding: '2rem'
-      }}>
+      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.5rem', maxWidth: '800px', margin: '0 auto', textAlign: 'center', padding: '2rem' }}>
         {[
           { num: '12K+', label: 'Active Creators' },
           { num: '2.4M', label: 'Clips Generated' },
@@ -157,7 +104,7 @@ export default function Home() {
                 <li key={f} style={{ color: '#6b7280', fontSize: '0.82rem', marginBottom: '0.6rem' }}>✓ {f}</li>
               ))}
             </ul>
-            <button style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#f0ede8', cursor: 'pointer' }}>Get Started Free</button>
+            <button onClick={() => setShowModal(true)} style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'transparent', color: '#f0ede8', cursor: 'pointer' }}>Get Started Free</button>
           </div>
           <div style={{ background: '#0f1117', border: '2px solid #ff4d1c', borderRadius: '14px', padding: '2rem', textAlign: 'left' }}>
             <div style={{ background: 'rgba(255,77,28,0.12)', color: '#ff4d1c', fontSize: '0.7rem', fontWeight: 600, padding: '3px 8px', borderRadius: '4px', display: 'inline-block', marginBottom: '0.75rem' }}>Most Popular</div>
@@ -169,7 +116,7 @@ export default function Home() {
                 <li key={f} style={{ color: '#6b7280', fontSize: '0.82rem', marginBottom: '0.6rem' }}>✓ {f}</li>
               ))}
             </ul>
-            <button style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: 'none', background: '#ff4d1c', color: '#fff', cursor: 'pointer', fontWeight: 500 }}>Start 7-Day Free Trial</button>
+            <button onClick={() => setShowModal(true)} style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: 'none', background: '#ff4d1c', color: '#fff', cursor: 'pointer', fontWeight: 500 }}>Start 7-Day Free Trial</button>
           </div>
           <div style={{ background: '#0f1117', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '14px', padding: '2rem', textAlign: 'left' }}>
             <div style={{ fontWeight: 800, fontSize: '1.3rem', marginBottom: '0.25rem' }}>Agency</div>
@@ -213,13 +160,7 @@ export default function Home() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800, margin: '1rem 0 0.5rem' }}>Analyze Any YouTube Video</h2>
           <p style={{ color: '#6b7280', marginBottom: '2rem', fontSize: '1.05rem' }}>Paste a link and let AI do the rest</p>
           <div style={{ display: 'flex', gap: '0.75rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '0.5rem', maxWidth: '560px', margin: '0 auto 2rem' }}>
-            <input
-              type="text"
-              placeholder="https://www.youtube.com/watch?v=..."
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '8px', border: 'none', background: 'transparent', color: '#fff', fontSize: '0.95rem', outline: 'none' }}
-            />
+            <input type="text" placeholder="https://www.youtube.com/watch?v=..." value={url} onChange={(e) => setUrl(e.target.value)} style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '8px', border: 'none', background: 'transparent', color: '#fff', fontSize: '0.95rem', outline: 'none' }} />
             <button onClick={checkVideo} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 700, whiteSpace: 'nowrap' }}>
               {loading ? '⏳ Analyzing...' : '🚀 Analyze'}
             </button>
@@ -241,12 +182,8 @@ export default function Home() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800, margin: '1rem 0 0.5rem' }}>Be First to Launch</h2>
           <p style={{ color: '#6b7280', marginBottom: '2rem', fontSize: '1.05rem' }}>Join 12,000+ creators waiting for full access. No spam, ever.</p>
           <div style={{ display: 'flex', gap: '0.75rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '0.5rem', maxWidth: '460px', margin: '0 auto' }}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '8px', border: 'none', background: 'transparent', color: '#fff', fontSize: '0.95rem', outline: 'none' }}
-            />
-            <button style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 700, whiteSpace: 'nowrap' }}>
+            <input type="email" placeholder="Enter your email" style={{ flex: 1, padding: '0.75rem 1rem', borderRadius: '8px', border: 'none', background: 'transparent', color: '#fff', fontSize: '0.95rem', outline: 'none' }} />
+            <button onClick={() => setShowModal(true)} style={{ background: '#ff4d1c', color: '#fff', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '8px', cursor: 'pointer', fontWeight: 700, whiteSpace: 'nowrap' }}>
               Get Access 🚀
             </button>
           </div>
